@@ -8,8 +8,9 @@ import { getStorage,connectStorageEmulator } from "firebase/storage";
 import AsyncStorage from "@react-native-async-storage/async-storage";  // AsyncStorage for persisting the login state
 import { getReactNativePersistence } from "firebase/auth";  // Persistence for React Native
 
+// Replace `apiKey` with a secure runtime value (env/config) before running.
 const firebaseConfig = {
-  apiKey: "AIzaSyDEiT_AOdA3x4vB2P48-5WNXnit1dzw318",
+  apiKey: "YOUR_FIREBASE_API_KEY",
   authDomain: "iat359-finalproject-1cfda.firebaseapp.com",
   projectId: "iat359-finalproject-1cfda",
   // use for firebase emulator.

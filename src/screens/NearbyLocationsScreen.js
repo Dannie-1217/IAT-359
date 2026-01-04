@@ -5,6 +5,8 @@ import { useNavigation,useRoute } from '@react-navigation/native';
 import * as Location from 'expo-location';
 import Icon from "react-native-vector-icons/Ionicons";
 
+const GOOGLE_MAPS_API_KEY = 'YOUR_GOOGLE_MAPS_API_KEY';
+
 
 const NearbyLocations = () => {
   const [searchText, setSearchText] = useState('');
@@ -35,7 +37,7 @@ const NearbyLocations = () => {
 
     try {
       const response = await fetch(
-        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${coords.latitude},${coords.longitude}&radius=1500&key=AIzaSyAkeXN8_H477KHaIuMfwM_smLSduWsm9q8`
+        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${coords.latitude},${coords.longitude}&radius=1500&key=${GOOGLE_MAPS_API_KEY}`
       );
       const data = await response.json();
       if (data.results) {
@@ -51,7 +53,7 @@ const NearbyLocations = () => {
   
     try {
       const response = await fetch(
-        `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${query}&location=${userLocation.latitude},${userLocation.longitude}&radius=1500&key=AIzaSyAkeXN8_H477KHaIuMfwM_smLSduWsm9q8`
+        `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${query}&location=${userLocation.latitude},${userLocation.longitude}&radius=1500&key=${GOOGLE_MAPS_API_KEY}`
       );
       const data = await response.json();
       if (data.results) {
@@ -59,7 +61,7 @@ const NearbyLocations = () => {
         
         data.results.forEach(async (item) => {
           const placeDetailsResponse = await fetch(
-            `https://maps.googleapis.com/maps/api/place/details/json?place_id=${item.place_id}&key=AIzaSyAkeXN8_H477KHaIuMfwM_smLSduWsm9q8`
+            `https://maps.googleapis.com/maps/api/place/details/json?place_id=${item.place_id}&key=${GOOGLE_MAPS_API_KEY}`
           );
           const placeDetailsData = await placeDetailsResponse.json();
           const placeDetails = placeDetailsData.result;

@@ -10,8 +10,10 @@ import Feather from "react-native-vector-icons/Feather";
 import { useNavigation } from "@react-navigation/native";
 import { useRoute } from '@react-navigation/native';
 
-const WEATHER_API_KEY = 'ece66d197096f95ae8fe0521c036241b'; 
+
+const WEATHER_API_KEY = 'YOUR_OPENWEATHERMAP_API_KEY';
 const WEATHER_API_URL = 'https://api.openweathermap.org/data/2.5/weather';
+const GOOGLE_MAPS_API_KEY = 'YOUR_GOOGLE_MAPS_API_KEY';
 
 export default function NewPostScreen() {
   const [title, setTitle] = useState('');
@@ -115,7 +117,7 @@ export default function NewPostScreen() {
   const fetchNearbyPlaces = async (lat, lon) => {
     try {
       const response = await fetch(
-        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lon}&radius=1500&type=point_of_interest&key=AIzaSyAkeXN8_H477KHaIuMfwM_smLSduWsm9q8`
+        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lon}&radius=1500&type=point_of_interest&key=${GOOGLE_MAPS_API_KEY}`
       );
       const data = await response.json();
       // console.log("here")
